@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
-function App() {
+function CounterApp() {
+  const [count, setCount] = useState(0);
+
+  function increment() {
+    if (count < 10) {
+      setCount(count + 1);
+    }
+  }
+
+  function decrement() {
+    if (count > 0) {
+      setCount(count - 1);
+    }
+  }
+
+  const counterStyle = {
+    fontSize: "72px",
+    color: count < 5 ? "green" : count < 10 ? "blue" : "red",
+  };
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1 style={counterStyle}>{count}</h1>
+      <button onClick={increment}>+</button>
+      <button onClick={decrement}>-</button>
+      <h2 textAlign='center'>Done by - Niharika Sharma- 12005467</h2>
     </div>
+
   );
 }
 
-export default App;
+export default CounterApp;
